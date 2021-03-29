@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 import datetime
 from LearningApp.models import Students
 from django.http import HttpResponse
@@ -19,4 +19,4 @@ def Student_register(request):
         regdate=datetime.datetime.today()
         obj=Students(Student_name=S_name,Student_username=S_username,Student_email=S_email,Student_password=S_password,Student_address=S_address,Course_stream=S_course,date_of_reg=regdate)
         obj.save()
-        return HttpResponse("created")
+        return redirect(login)
