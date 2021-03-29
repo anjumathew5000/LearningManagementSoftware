@@ -1,0 +1,80 @@
+{% extends 'index.html' %}
+
+{% block content %}
+<section class="grey section">
+    <div class="container">
+    <div class="row">
+    <div id="content" class="col-md-12 col-sm-12 col-xs-12">
+    <div class="blog-wrapper">
+    <div class="row second-bread">
+    <div class="col-md-6 text-left">
+    <h1>Course List </h1>
+    </div>
+    <div class="col-md-6 text-right">
+    <div class="bread">
+    <ol class="breadcrumb">
+    
+    </ol>
+    </div>
+    </div>
+    </div>
+    </div>
+    <div class="blog-wrapper">
+    <div class="blog-desc">
+    <div class="shop-cart">
+    <table class="table table-bordered">
+    <thead>
+    <tr>
+    <th>
+    Course Id
+    </th>
+    <th>
+    Course Name
+    </th>
+    <th>
+    Course Stream
+    </th>
+    <th>
+    Date Of entrollment
+    </th>
+    <th>
+     Tests
+    </th>
+    
+    </tr>
+    </thead>
+    <tbody>
+        {% for d in data %}
+    <tr>
+    <td>
+    {{d.course_id.id}}
+    </td>
+    <td>
+   {{d.course_id.Course_name}}
+    </td>
+    <td>
+        {{d.course_id.Course_stream}}
+    </td>
+    <td>
+        {{d.date_entrollment}}
+    </td>
+    <td>
+        <button type='submit' >Take Tests</button>
+    </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+    
+    </table>
+    <div class="coupon-code-wrapper">
+    
+    
+    <hr class="invis">
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </section>
+   {% endblock %}

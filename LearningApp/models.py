@@ -1,4 +1,5 @@
 from django.db import models
+from CourseApp.models import Courses
 
 # Create your models here.
 
@@ -11,6 +12,21 @@ class Students(models.Model):
     Student_address=models.TextField(null=True,blank=True)
     date_of_reg=models.DateField()
     Course_stream=models.CharField(max_length=50,null=True,blank=True)
+    
+class Student_course_enrolment(models.Model):
+    student_id=models.ForeignKey(Students,on_delete=models.CASCADE)
+    course_id=models.ForeignKey(Courses,on_delete=models.CASCADE)
+    date_entrollment=models.DateField()
+    date_of_completion=models.DateField(null=True,blank=True)
+    
+
+class Student_course_Wishlist(models.Model):
+    student_id=models.ForeignKey(Students,on_delete=models.CASCADE)
+    course_id=models.ForeignKey(Courses,on_delete=models.CASCADE)
+
+
+
+
 
 
 

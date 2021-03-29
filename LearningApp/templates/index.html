@@ -45,9 +45,10 @@
 
 <li class="dropdown">
     {% if request.session.studentid %}
-    <a><i class="fa fa-lock"></i>Welcome {{request.session.studentname}}</a>
+    <h4 style="color:white;">Welcome {{request.session.studentname}}</h4>
+    
     {% else %}
-<a class="dropdown-toggle" href="{% url 'login' %}" data-toggle="dropdown"><i class="fa fa-lock"></i> Login & Register</a>
+
 {% endif %}
 
 </li>
@@ -71,7 +72,7 @@
 </div>
 <div class="navbar-collapse collapse">
 <ul class="nav navbar-nav">
-<li class="dropdown ttmenu-half"><a href="#" data-toggle="dropdown" class="dropdown-toggle">Home </a>
+<li class="dropdown ttmenu-half"><a href="{% url 'index' %}" data-toggle="dropdown" class="dropdown-toggle">Home </a>
 <ul class="dropdown-menu menu-bg wbg">
 
 </ul>
@@ -80,26 +81,52 @@
 <li class="dropdown ttmenu-half"><a href="#" data-toggle="dropdown" class="dropdown-toggle">Courses <b class="fa fa-angle-down"></b></a>
 <ul class="dropdown-menu">
 <li>
+    
 <div class="ttmenu-content">
 <div class="row">
 <div class="col-md-6">
 <div class="box">
 <ul>
 <li><a href="{% url 'courselist' %}">Courses List</a></li>
-<li><a href="course-grid.html">Courses Grid</a></li>
+<!-- <li><a href="course-grid.html">Courses Grid</a></li> -->
 
 </ul>
 </div>
+
 </div>
 
 </div>
-<hr>
-<div class="row">
 
-</div>
+
 </li>
 </ul>
 </li>
+{% if request.session.studentid %}
+<li class="dropdown ttmenu-half"><a href="#" data-toggle="dropdown" class="dropdown-toggle">My Account<b class="fa fa-angle-down"></b></a>
+    <ul class="dropdown-menu">
+    <li>
+        
+    <div class="ttmenu-content">
+    <div class="row">
+    <div class="col-md-6">
+    <div class="box">
+    <ul>
+    <li><a href="#">Profile</a></li>
+    <li><a href="#">Wishlist</a></li>
+    <li><a href="{% url 'course_reglist' %}">Courses Registered</a></li>
+    
+    </ul>
+    </div>
+    
+    </div>
+    
+    </div>
+    
+   
+    </li>
+    </ul>
+    </li>
+    {% endif %}
 
 
 </li>
@@ -107,7 +134,7 @@
 </ul>
 <ul class="nav navbar-nav navbar-right">
     {% if request.session.studentid %}
-<li><a class="btn btn-primary" href="{% url 'login' %}"> Logout</a></li>
+<li><a class="btn btn-primary" href="{% url 'studentlogout' %}"> Logout</a></li>
 {% else %}
 <li><a class="btn btn-primary" href="{% url 'login' %}"><i class="fa fa-sign-in"></i> Register Now</a></li>
 {% endif %}
@@ -117,6 +144,15 @@
 </div>
 </div>
 </header>
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    {% if message.tags %} 
+    <script>alert("{{ message }}")</script>
+    {% endif %}>
+    {% endfor %}
+</ul>
+{% endif %}
 {% block content %}
 <section class="slider-section">
 <div class="tp-banner-container">

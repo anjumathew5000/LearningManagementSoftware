@@ -22,7 +22,8 @@
 
 <hr class="invis clearfix">
 <p>{{d.Course_description}}</p>
-<a href="course-single.html" class="btn btn-default btn-sm">Add to Wishlist</a>
+<a href="{% url 'wishlist' cid=d.id %}" class="btn btn-default btn-sm">Add to Wishlist</a>
+<a href="{% url 'course_registeration' cid=d.id %}" class="btn btn-default btn-sm">Register course</a>
 </div>
 
 </div>
