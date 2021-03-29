@@ -61,7 +61,8 @@ def wishlist_delete(request,dataid):
     return redirect(Wishlist_view)
 def course_reglist(request):
     if 'studentid' in request.session:
-        data=Student_course_enrolment.objects.all()
+        studentid=request.session.get('studentid')
+        data=Student_course_enrolment.objects.filter(student_id=Students.objects.get(id=studentid))
         return render(request,'course_reglist.html',{'data':data})
     
 def course_registeration(request,cid):
