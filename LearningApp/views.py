@@ -12,6 +12,9 @@ def index(request):
     return render(request,'index.html')
 def login(request):
     return render(request,'login.html')
+
+#Student Functions
+
 def Student_register(request):
     if request.method=='POST':
         S_name=request.POST.get('name')
@@ -35,6 +38,9 @@ def Student_login(request):
             return render(request,'index.html')
         else:
             return render(request,'login.html')
+
+#wishlist Functions
+
 def Wishlist_view(request):
     if 'studentid' in request.session:
         studentid=request.session.get('studentid')
@@ -59,6 +65,9 @@ def wishlist_delete(request,dataid):
     data=Student_course_Wishlist.objects.filter(id=dataid)
     data.delete()
     return redirect(Wishlist_view)
+
+#Course Registerations
+
 def course_reglist(request):
     if 'studentid' in request.session:
         studentid=request.session.get('studentid')
@@ -80,6 +89,9 @@ def course_registeration(request,cid):
             return redirect(course_reglist)
     else:
         return redirect(login)
+
+#test taken functions
+
 def test_taken_list(request):
     if 'studentid' in request.session:
         data=Student_test_taken.objects.filter(student_id=request.session.get('studentid'))
@@ -100,6 +112,8 @@ def test_taken(request,tid,cid):
             obj.save()
             messages.success(request, 'successfully completed the test!')
             return redirect(test_taken_list)
+#student Profile
+
 def student_profile(request):
     if 'studentid' in request.session:
         sdata=Students.objects.get(id=request.session.get('studentid'))
@@ -107,6 +121,7 @@ def student_profile(request):
         whishlist_count=Student_course_Wishlist.objects.filter(student_id=request.session.get('studentid')).count()
         test_count=Student_test_taken.objects.filter(student_id=request.session.get('studentid'),test_status="completed").count()
         return render(request,'profile.html',{'sdata':sdata,'Course_count':Course_count,'whishlist_count':whishlist_count,'test_count':test_count})
+#Logout 
 
 def Student_logout(request):
     del request.session['studentid']
