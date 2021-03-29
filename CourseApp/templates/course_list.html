@@ -1,0 +1,40 @@
+{% extends 'index.html' %}
+
+{% block content %}
+</section> 
+<section class="white section">
+<div class="container">
+    {% for d in course_data %}
+<div class="row course-list">
+    
+<div class="col-md-4 col-sm-4 col-xs-12">
+<div class="shop-item-list entry">
+<div class="">
+<img src="{{ d.Couser_Image.url }}" alt="">
+<div class="magnifier">
+</div>
+</div>
+</div>
+</div>
+<div class="col-md-8 col-md-8">
+<div class="shop-list-desc">
+<h4><a href="course-single.html">{{d.Course_name}}</a></h4>
+
+<hr class="invis clearfix">
+<p>{{d.Course_description}}</p>
+<a href="course-single.html" class="btn btn-default btn-sm">Add to Wishlist</a>
+</div>
+
+</div>
+
+</div>
+{% endfor %}
+
+
+<hr class="invis">
+
+</div>
+</section>
+
+{% endblock %}
+</div>

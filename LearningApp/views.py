@@ -11,12 +11,24 @@ def login(request):
 def Student_register(request):
     if request.method=='POST':
         S_name=request.POST.get('name')
-        S_email=request.POST.get('username')
-        S_username=request.POST.get('email')
+        S_email=request.POST.get('email')
+        S_username=request.POST.get('username')
         S_password=request.POST.get('password')
-        S_address=request.POST.get('course')
-        S_course=request.POST.get('address')
+        S_address=request.POST.get('address')
+        S_course=request.POST.get('course')
         regdate=datetime.datetime.today()
         obj=Students(Student_name=S_name,Student_username=S_username,Student_email=S_email,Student_password=S_password,Student_address=S_address,Course_stream=S_course,date_of_reg=regdate)
         obj.save()
         return redirect(login)
+def Student_login(request):
+     if request.method=='POST':
+        user_name=request.POST.get('username')
+        password=request.POST.get('password')
+        if Students.objects.filter(Student_username=user_name,Student_password=password).exists():
+            sdata=Students.objects.get(Student_username=user_name,Student_password=password)
+            request.session['studentid']=sdata.id
+            request.session['studentname']=sdata.Student_name
+            return render(request,'index.html')
+        else:
+            return render(request,'login.html')
+

@@ -4,6 +4,6 @@ from CourseApp import views
 
 
 urlpatterns = [
-    path('courselist',views.Courselist,name="courselist")
+    path('courselist',views.Course_list,name="courselist")
     
 ]
