@@ -1,5 +1,6 @@
 from django.db import models
 from CourseApp.models import Courses
+from TestApp.models import Tests
 
 # Create your models here.
 
@@ -23,6 +24,13 @@ class Student_course_enrolment(models.Model):
 class Student_course_Wishlist(models.Model):
     student_id=models.ForeignKey(Students,on_delete=models.CASCADE)
     course_id=models.ForeignKey(Courses,on_delete=models.CASCADE)
+
+
+class Student_test_taken(models.Model):
+    student_id=models.ForeignKey(Students,on_delete=models.CASCADE)
+    test_id=models.ForeignKey(Tests,on_delete=models.CASCADE)
+    test_status=models.CharField(max_length=10,null=True,blank=True)
+    
 
 
 

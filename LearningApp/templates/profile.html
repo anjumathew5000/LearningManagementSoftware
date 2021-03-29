@@ -1,0 +1,67 @@
+{% extends 'index.html' %}
+
+{% block content %}
+<section class="grey page-title">
+    <div class="container">
+    <div class="row">
+    
+    <div class="col-md-6 text-right">
+    <div class="bread">
+    
+    </div>
+    </div>
+    </div>
+    </div>
+    </section>
+    <section class="white section">
+    <div class="container">
+    <div class="row">
+    <div id="course-left-sidebar" class="col-md-3">
+    
+    <div class="course-meta">
+    <p>{{request.session.studentname}}</p>
+    <hr>
+    <p>My Profile <small></small></p>
+    <hr>
+    <p>My Courses <small class="label label-primary"><a href="{% url 'course_reglist' %}">{{Course_count}}</a></small></p>
+    <hr>
+    <p>Test Taken<small class="label label-primary"><a href="{% url 'test_taken_list' %}">{{test_count}}</a></small></p>
+    <hr>
+    <p>Wish List<small class="label label-primary"><a href="{% url 'Wishlist_view' %}">{{whishlist_count}}</a></small></p>
+    <hr>
+    
+    </div>
+    </div>
+    <div id="course-content" class="col-md-9">
+    <div class="course-description">
+    <h3 class="course-title">My Profile</h3>
+    
+    <div class="edit-profile">
+    <form role="form">
+    <div class="form-group">
+    <label>First / Last Name</label>
+    <input type="text" class="form-control" value="{{sdata.Student_name}}">
+    </div>
+    <div class="form-group">
+    <label>Email Address</label>
+    <input type="email" class="form-control" value="{{sdata.Student_email}}">
+    </div>
+    <div class="form-group">
+    <label>Password</label>
+    <input type="password" class="form-control" value="{{sdata.Student_password}}">
+    </div>
+    <div class="form-group">
+        <label>Address</label>
+    <input type="text" class="form-control" value="{{sdata.Student_address}}">
+    </div>
+    
+    <div class="form-group">
+        <label>Course stream </label>
+    <input type="text" class="form-control" value="{{sdata.Course_stream}}">
+    </div>
+    </form>
+    </div>
+    </div>
+    
+    </section>
+    {% endblock %}

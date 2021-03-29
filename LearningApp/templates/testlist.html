@@ -8,7 +8,7 @@
     <div class="blog-wrapper">
     <div class="row second-bread">
     <div class="col-md-6 text-left">
-    <h1>Course List </h1>
+    <h1>Test List </h1>
     </div>
     <div class="col-md-6 text-right">
     <div class="bread">
@@ -26,20 +26,19 @@
     <thead>
     <tr>
     <th>
+    Test Id
+    </th>
+    <th>
     Course Id
     </th>
     <th>
-    Course Name
+    Test Duration
     </th>
+    
     <th>
-    Course Stream
+    Status
     </th>
-    <th>
-    Date Of entrollment
-    </th>
-    <th>
-     Tests
-    </th>
+   
     
     </tr>
     </thead>
@@ -47,19 +46,23 @@
         {% for d in data %}
     <tr>
     <td>
-    {{d.course_id.id}}
+    {{d.test_id}}
     </td>
     <td>
-   {{d.course_id.Course_name}}
+   {{d.Course_id.id}}
     </td>
     <td>
-        {{d.course_id.Course_stream}}
+        {{d.test_duration}}
+    </td>
+    
+    <td>
+    
+        <a href="{% url 'testtaken' tid=d.id cid=d.Course_id.id %}">Test Taken</button>
+        
     </td>
     <td>
-        {{d.date_entrollment}}
-    </td>
-    <td>
-        <a href="{% url 'testlist' cid=d.course_id.id %}" class=" btn btn-default">Take Tests</a>
+        
+        
     </td>
     </tr>
     {% endfor %}
